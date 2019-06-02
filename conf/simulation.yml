@@ -38,7 +38,7 @@ movement: null
 port:
     berth_count: 3
 
-ship: null
+# ship: null
 
 queue:
     max_len: 10
