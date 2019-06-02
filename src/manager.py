@@ -1,8 +1,8 @@
 class Manager(object):
-    def __init__(self):
-        import blocks
+    def __init__(self, config_path):
+        from . import blocks
 
-        self.config = self.get_confif('../conf/simulation.yml')
+        self.config = self.get_confif(config_path)
 
         self.time = 0
         self.generator = blocks.Generator(self.config["generator"])
@@ -56,7 +56,7 @@ class Manager(object):
         return ticks
 
     def print_stats(self):
-        from utils import pretty_time_delta
+        from .utils import pretty_time_delta
         time = pretty_time_delta(self.time * 60)
         print("Time passed:", time)
         return
@@ -68,7 +68,7 @@ class Manager(object):
             return False
 
     def get_confif(self, path):
-        from utils import read_yaml
+        from .utils import read_yaml
 
         conf = read_yaml(path)
         return conf
